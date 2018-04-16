@@ -1,0 +1,8 @@
+package com.zperkowski.exsys
+rule "Hello World"
+   when
+     helloWorldObject: Main()
+   then
+     helloWorldObject.showMessage();
+     System.out.print(" from Drools!");
+end
