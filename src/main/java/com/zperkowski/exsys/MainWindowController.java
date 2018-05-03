@@ -19,17 +19,13 @@ public class MainWindowController {
     }
 
     @FXML
-    void tabFireClicked() {
-        try {
-            fireAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("fireTab.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void tabFireClicked() throws IOException {
+        fireAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("fireTab.fxml")));
     }
 
     @FXML
-    void tabExSysClicked() {
-
+    void tabExSysClicked() throws IOException {
+        exSysAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("exSysTab.fxml")));
     }
 
 }
