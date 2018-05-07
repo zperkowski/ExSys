@@ -1,0 +1,13 @@
+package com.zperkowski.exsys
+rule "Smoke"
+   when
+     smokeString: String(this == "Smoke")
+   then
+     System.out.print("The fire is on!\n");
+end
+rule "No smoke"
+   when
+     smokeString: String(this == "")
+   then
+     System.out.print("There is no fire.\n");
+end

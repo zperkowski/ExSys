@@ -4,5 +4,5 @@ rule "Hello World"
      helloWorldObject: Main()
    then
      helloWorldObject.showMessage();
-     System.out.print(" from Drools!");
+     System.out.print(" from Drools!\n");
 end
