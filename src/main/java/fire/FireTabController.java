@@ -40,6 +40,8 @@ public class FireTabController {
     void buttonRun() {
         insertObjects();
         session.fireAllRules();
+        session.insert(new Firefighter("Joe"));
+        session.fireAllRules();
         factsHandles = session.getFactHandles();
         for (FactHandle handle :
                 factsHandles) {

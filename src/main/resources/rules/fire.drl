@@ -19,5 +19,23 @@ rule "Phone"
     when
         p : Phone();
     then
-        System.out.print("Call " + p.getNumber() + "!");
+        System.out.print("Call " + p.getNumber() + "!\n");
+    end
+
+rule "Firefighter"
+    when
+        ff : Firefighter()
+        f: Fire()
+    then
+        System.out.print("A firefighter " + ff.getName() + " arrived!\n");
+        retract(f)
+        System.out.printf("Fire extinguished\n");
+    end
+
+rule "FirefighterDone"
+    when
+        ff : Firefighter()
+        not Fire()
+    then
+        System.out.printf("Firefighter is leaving\n");
     end
