@@ -1,7 +1,6 @@
 package fire;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import org.apache.log4j.BasicConfigurator;
@@ -12,12 +11,12 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.FactHandle;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 public class FireTabController {
 
-    private Set<FactHandle> factsHandles;
+    private Collection<FactHandle> factsHandles;
     private KieSession session;
     private Measurement measurement;
 
@@ -41,6 +40,7 @@ public class FireTabController {
     void buttonRun() {
         insertObjects();
         session.fireAllRules();
+        factsHandles = session.getFactHandles();
         for (FactHandle handle :
                 factsHandles) {
             session.delete(handle);
@@ -65,6 +65,6 @@ public class FireTabController {
     }
 
     void insertObjects() {
-        factsHandles.add(session.insert(measurement));
+        session.insert(measurement);
     }
 }

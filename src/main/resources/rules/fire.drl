@@ -1,13 +1,23 @@
 package fire
+rule "Smoke"
+   when
+     Measurement(isSmoke(), getTemp() > 150)
+   then
+     System.out.print("There is smoke!\n");
+     insert(new Fire());
+end
+
 rule "Fire"
    when
-     m: Measurement(isSmoke(), getTemp() > 150)
+     Fire()
    then
+     insert(new Phone(112));
      System.out.print("The fire is on!\n");
 end
-rule "No fire"
-   when
-     m: Measurement(!isSmoke(), getTemp() < 150)
-   then
-     System.out.print("There is no fire.\n");
-end
+
+rule "Phone"
+    when
+        p : Phone();
+    then
+        System.out.print("Call " + p.getNumber() + "!");
+    end
