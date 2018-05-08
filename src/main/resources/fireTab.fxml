@@ -22,6 +22,8 @@
             <Label text="Smoke sensor" />
             <CheckBox fx:id="checkBoxSmoke" mnemonicParsing="false" onAction="#checkBoxSmokeClicked" text="Smoke" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#buttonRun" text="Run" GridPane.rowIndex="2" />
+            <Label text="Temperature" GridPane.rowIndex="1" />
+            <Slider fx:id="sliderTemperature" blockIncrement="1.0" max="200.0" minorTickCount="25" onMouseReleased="#sliderTemperatureChanged" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

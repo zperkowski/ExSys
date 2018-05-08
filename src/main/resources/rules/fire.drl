@@ -1,13 +1,13 @@
-package com.zperkowski.exsys
-rule "Smoke"
+package fire
+rule "Fire"
    when
-     smokeString: String(this == "Smoke")
+     m: Measurement(isSmoke(), getTemp() > 150)
    then
      System.out.print("The fire is on!\n");
 end
-rule "No smoke"
+rule "No fire"
    when
-     smokeString: String(this == "")
+     m: Measurement(!isSmoke(), getTemp() < 150)
    then
      System.out.print("There is no fire.\n");
 end

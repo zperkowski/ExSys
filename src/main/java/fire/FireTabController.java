@@ -3,6 +3,7 @@ package fire;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Slider;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -18,12 +19,12 @@ public class FireTabController {
 
     private Set<FactHandle> factsHandles;
     private KieSession session;
-    private String smoke = "";
+    private Measurement measurement;
 
     @FXML
     CheckBox checkBoxSmoke;
     @FXML
-    Button buttonRun;
+    Slider sliderTemperature;
 
     @FXML
     void initialize() {
@@ -33,10 +34,12 @@ public class FireTabController {
         KieContainer kContainer = ks.getKieClasspathContainer();
         session = kContainer.newKieSession("fire-rules");
         factsHandles = new HashSet<>();
+        measurement = new Measurement();
     }
 
     @FXML
     void buttonRun() {
+        insertObjects();
         session.fireAllRules();
         for (FactHandle handle :
                 factsHandles) {
@@ -46,16 +49,22 @@ public class FireTabController {
 
     @FXML
     void checkBoxSmokeClicked() {
-        System.out.println("checkBoxSmokeClicked: " + checkBoxSmoke.isSelected());
+        System.out.println("checkBoxSmokeClicked(): " + checkBoxSmoke.isSelected());
         if (checkBoxSmoke.isSelected())
-            smoke = "Smoke";
+            measurement.setSmoke(true);
         else
-            smoke = "";
+            measurement.setSmoke(false);
+        System.out.println("measurement.isSmoke(): " + measurement.isSmoke());
+    }
 
-        insertObjects();
+    @FXML
+    void sliderTemperatureChanged() {
+        System.out.println("sliderTemperatureChanged(): " + sliderTemperature.getValue());
+        measurement.setTemp((int) sliderTemperature.getValue());
+        System.out.println("measurement.getTemp(): " + measurement.getTemp());
     }
 
     void insertObjects() {
-        factsHandles.add(session.insert(smoke));
+        factsHandles.add(session.insert(measurement));
     }
 }
