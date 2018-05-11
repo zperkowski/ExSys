@@ -6,6 +6,9 @@
     <kbase name="fire" packages="rules">
         <ksession name="fire-rules"/>
     </kbase>
+    <kbase name="family" packages="rules">
+        <ksession name="family-rules"/>
+    </kbase>
     <kbase name="dtables" packages="dtables">
         <ksession name="ksession-dtables"/>
     </kbase>

@@ -11,6 +11,8 @@ public class MainWindowController {
     @FXML
     AnchorPane fireAnchorPane;
     @FXML
+    AnchorPane familyAnchorPane;
+    @FXML
     AnchorPane exSysAnchorPane;
 
     @FXML
@@ -21,6 +23,11 @@ public class MainWindowController {
     @FXML
     void tabFireClicked() throws IOException {
         fireAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("fireTab.fxml")));
+    }
+
+    @FXML
+    void tabFamilyClicked() throws IOException {
+        familyAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("familyTab.fxml")));
     }
 
     @FXML
