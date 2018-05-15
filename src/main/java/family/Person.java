@@ -1,7 +1,7 @@
 package family;
 
 public class Person {
-    enum Gender {UNDEFINED, MEN, WOMEN};
+    public enum Gender {UNDEFINED, MEN, WOMEN};
     public String name;
     public Gender gender;
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="family.FamilyTabController">
@@ -14,6 +16,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <TextArea fx:id="textArea_status" prefHeight="200.0" prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#button_update_clicked" text="Update" GridPane.columnIndex="1" />
+         </children>
       </GridPane>
    </children>
 </AnchorPane>

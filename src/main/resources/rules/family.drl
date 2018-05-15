@@ -45,5 +45,21 @@ rule "Init"
 		insert(new Relation(agnieszka,iwona,"parent"));
 		insert(new Relation(krzysztof,jacek,"parent"));
 		insert(new Relation(krzysztof,iwona,"parent"));
-
+        System.out.println("Family \t Rule Init fired");
 end
+
+rule "Woman"
+    when
+        r : Relation(people[0].toString() matches ".*a");
+    then
+        r.people[0].gender = Person.Gender.WOMEN;
+        System.out.println("Family \t Rule Woman fired");
+    end
+
+rule "Man"
+    when
+        r : Relation(people[0].toString() not matches ".*a");
+    then
+        r.people[0].gender = Person.Gender.MEN;
+        System.out.println("Family \t Rule Man fired");
+    end
