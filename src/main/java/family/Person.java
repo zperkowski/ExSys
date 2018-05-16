@@ -13,4 +13,8 @@ public class Person {
     public String toString() {
         return name;
     }
+
+    public Gender getGender() {
+        return gender;
+    }
 }

@@ -53,7 +53,7 @@ rule "Woman"
         r : Relation(people[0].toString() matches ".*a");
     then
         r.people[0].gender = Person.Gender.WOMEN;
-        System.out.println("Family \t Rule Woman fired");
+        System.out.println("Family \t Rule Woman fired for " + r.people[0].toString() + " " + r.people[0].getGender());
     end
 
 rule "Man"
@@ -61,5 +61,21 @@ rule "Man"
         r : Relation(people[0].toString() not matches ".*a");
     then
         r.people[0].gender = Person.Gender.MEN;
-        System.out.println("Family \t Rule Man fired");
+        System.out.println("Family \t Rule Man fired for " + r.people[0].toString() + " " + r.people[0].getGender());
+    end
+
+rule "Father"
+    when
+        r : Relation(relation == "parent", people[0].getGender() == Person.Gender.MEN);
+    then
+        insert(new Relation(r.people[0], r.people[1], "father"));
+        System.out.println("Family \t Rule Father fired for " + r.people[0].toString());
+    end
+
+rule "Mother"
+    when
+        r : Relation(relation == "parent", people[0].getGender() == Person.Gender.WOMEN);
+    then
+        insert(new Relation(r.people[0], r.people[1], "mother"));
+        System.out.println("Family \t Rule Mother fired for " + r.people[0].toString());
     end
