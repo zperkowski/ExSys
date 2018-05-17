@@ -8,5 +8,8 @@ public class Relation {
         this.people[0] = o1;
         this.people[1] = o2;
         this.relation = relation;
+
+        o1.addRelation(this);
+        o2.addRelation(this);
     }
 }
