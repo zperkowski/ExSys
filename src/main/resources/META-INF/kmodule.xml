@@ -9,6 +9,9 @@
     <kbase name="family" packages="rules">
         <ksession name="family-rules"/>
     </kbase>
+    <kbase name="exsys" packages="rules">
+        <ksession name="exsys-rules"/>
+    </kbase>
     <kbase name="dtables" packages="dtables">
         <ksession name="ksession-dtables"/>
     </kbase>
