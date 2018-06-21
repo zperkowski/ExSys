@@ -1,1 +1,17 @@
 package com.zperkowski.exsys
+import java.util.Arrays
+
+rule "Init"
+   when
+     qa : QA(getAnswerd() == "")
+   then
+    System.out.println("Rule\tInit");
+    qa.change(QA.q_hoay, Arrays.asList(QA.a_05, QA.a_612, QA.a_13));
+end
+
+rule "Q_hoay_answered"
+    when
+        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() != "")
+    then
+        System.out.println("Rule\tQ_hoay_answered");
+    end

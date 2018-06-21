@@ -2,8 +2,9 @@ package com.zperkowski.exsys;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class QA {
+public class QA extends Observable {
     public static final String q_hoay = "How old are you?";
     public static final String q_dyhutlomaav = "Do you have unlimited time, lots of money and a van?";
     public static final String q_dycythsma = "Do you consider yourself to have some musical ability?";
@@ -88,12 +89,14 @@ public class QA {
         question = "";
         (answers = new ArrayList<>()).add("");
         answerd = "";
+        notifyObservers();
     }
 
     public QA(String question, List<String> answers) {
         this.question = question;
         this.answers = answers;
         this.answerd = "";
+        notifyObservers();
     }
 
     public String getQuestion() {
@@ -110,5 +113,13 @@ public class QA {
 
     public void setAnswerd(String answerd) {
         this.answerd = answerd;
+    }
+
+    public void change(String question, List<String> answers) {
+        this.question = question;
+        this.answers = answers;
+        setAnswerd("");
+        setChanged();
+        notifyObservers();
     }
 }
