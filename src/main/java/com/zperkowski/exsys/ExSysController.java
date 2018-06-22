@@ -49,31 +49,26 @@ public class ExSysController implements Observer {
     public void ex_button_next_clicked() {
         if (ex_combo_answer.getItems().size() > 0) {
 
-            factsHandles = session.getFactHandles();
-            for (FactHandle handle :
-                    factsHandles) {
-                session.delete(handle);
-            }
-
             String answer = ex_combo_answer.getSelectionModel().getSelectedItem().toString();
             qa.setAnswerd(answer);
-            System.out.println(qa.getAnswerd());
+            System.out.println("GUI:\t\t\t" + qa.getAnswerd());
+            qa = new QA(qa, answer);
             session.insert(qa);
             session.fireAllRules();
         }
     }
 
-    private void initQuestion(QA qa) {
+    private void initQuestion() {
         ex_label_question.setText(qa.getQuestion());
         ObservableList<String> answers = FXCollections.observableArrayList(qa.getAnswers());
         ex_combo_answer.setItems(answers);
         ex_combo_answer.getSelectionModel().select(0);
-        this.qa = qa;
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("Observer was triggered - GUI updated");
-        initQuestion((QA) o);
+        System.out.println("Observer\t\t\t\t" + o.toString() + " was triggered - GUI updated");
+        qa = (QA) o;
+        initQuestion();
     }
 }

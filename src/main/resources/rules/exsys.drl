@@ -3,15 +3,61 @@ import java.util.Arrays
 
 rule "Init"
    when
-     qa : QA(getAnswerd() == "")
+     qa : QA(getQuestion() == "", getAnswerd() == "")
    then
-    System.out.println("Rule\tInit");
+    System.out.println("Rule\tInit\t\t\t" + qa.toString() + " " + qa.countObservers());
     qa.change(QA.q_hoay, Arrays.asList(QA.a_05, QA.a_612, QA.a_13));
+    retract(qa)
 end
 
-rule "Q_hoay_answered"
+rule "Q_hoay_answered_05"
     when
-        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() != "")
+        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_05)
     then
-        System.out.println("Rule\tQ_hoay_answered");
+        System.out.println("Rule Q_hoay_answered_05\t" + qa.toString() + " answer:\t" + qa.getAnswerd());
+        qa.deleteObservers();
+        QA new_qa = new QA(QA.q_dypwtbacp,
+            Arrays.asList(
+                    QA.a_y,
+                    QA.a_niahjtp
+                    ),
+                    qa.getObserver());
+        insert(new_qa);
+    end
+
+rule "Q_hoay_answered_612"
+    when
+        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_612)
+    then
+        System.out.println("Rule Q_hoay_answered_612\t" + qa.toString() + " answer:\t" + qa.getAnswerd());
+        qa.deleteObservers();
+        QA new_qa = new QA(QA.q_ayptpialofpt,
+            Arrays.asList(
+                    QA.a_y,
+                    QA.a_nijwtgpaqap
+                    ),
+                    qa.getObserver());
+        insert(new_qa);
+    end
+
+rule "Q_hoay_answered_13"
+    when
+        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_13)
+    then
+        System.out.println("Rule Q_hoay_answered_13\t" + qa.toString() + " answer:\t" + qa.getAnswerd());
+        qa.deleteObservers();
+        QA new_qa = new QA(QA.q_dyhutlomaav,
+            Arrays.asList(
+                    QA.a_yihagac,
+                    QA.a_nr
+                    ),
+                    qa.getObserver());
+        insert(new_qa);
+    end
+
+rule "Q_yihagac_answered"
+    when
+        qa : QA(getQuestion() == QA.q_dyhutlomaav, getAnswerd() != "")
+    then
+        System.out.println("Rule Q_yihagac_answered\t\t" + qa.toString() + " answer:\t" + qa.getAnswerd());
     end
