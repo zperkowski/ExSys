@@ -29,6 +29,8 @@ public class FamilyTabController {
         KieContainer kContainer = ks.getKieClasspathContainer();
         session = kContainer.newKieSession("family-rules");
         factsHandles = session.getFactHandles();
+        session.insert(this);
+        session.fireAllRules();
     }
 
     @FXML

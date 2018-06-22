@@ -1,6 +1,7 @@
 package family
 rule "Init"
 	when
+	    FamilyTabController()
 	then
 		Person maria          = new Person("Maria");
 		Person ewa            = new Person("Ewa");
