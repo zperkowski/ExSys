@@ -1,8 +1,16 @@
 package com.zperkowski.exsys
+
+// https://docs.jboss.org/drools/release/7.7.0.Final/drools-docs/html_single/index.html#_declaring_enumerative_types
+declare enum DaysOfWeek
+   SUN("Sunday"),MON("Monday"),TUE("Tuesday"),WED("Wednesday"),THU("Thursday"),FRI("Friday"),SAT("Saturday");
+
+   fullName : String
+end
+
 rule "Hello World"
    when
      helloWorldObject: Main()
    then
      helloWorldObject.showMessage();
-     System.out.print(" from Drools!\n");
+     System.out.println(" from Drools! " + DaysOfWeek.MON + " " +DaysOfWeek.MON.toString());
 end
