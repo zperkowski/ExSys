@@ -52,7 +52,7 @@ public class QA extends Observable {
     public static final String a_yiagbas = "Yes, I'm gonna be a star";
     public static final String a_jinmiin = "Jazz isn't music it's noise";
     public static final String a_stc = "Sure thing, cat!";
-    public static final String a_mriaatp = "Not really, I'm a team player";
+    public static final String a_nriaatp = "Not really, I'm a team player";
     public static final String a_iliac = "I live in a church";
     public static final String a_tipor = "There's plenty of room";
     public static final String a_iimcab = "It's more compact and bijou";
