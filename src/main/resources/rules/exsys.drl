@@ -60,8 +60,8 @@ rule "q_dypwtbacp_answered_y"
         qa : QA(getQuestion() == QA.q_dypwtbacp, getAnswerd() == QA.a_y)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Violin");
         qa.deleteObservers();
-        // TODO: Violin
     end
 
 rule "q_dypwtbacp_answered_niahjtp"
@@ -85,8 +85,8 @@ rule "Q_ayptpialofpt_answered_y"
         qa : QA(getQuestion() == QA.q_ayptpialofpt, getAnswerd() == QA.a_y)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Piano");
         qa.deleteObservers();
-        // TODO: Piano
     end
 
 rule "Q_ayptpialofpt_answered_nijwtgpaqap"
@@ -109,8 +109,8 @@ rule "q_dywtdyfm_answered_wnij"
         qa : QA(getQuestion() == QA.q_dywtdyfm, getAnswerd() == QA.a_wnij)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Rossenbar (?)");
         qa.deleteObservers();
-        // TODO: Rossenbar ?
     end
 
 rule "q_dywtdyfm_answered_ianab"
@@ -134,8 +134,8 @@ rule "q_dyhabh_answered_iliac"
         qa : QA(getQuestion() == QA.q_dyhabh, getAnswerd() == QA.a_iliac)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Organs");
         qa.deleteObservers();
-        // TODO: Organs
     end
 
 rule "q_dyhabh_answered_tipor"
@@ -159,8 +159,8 @@ rule "q_dywtpiao_answered_tmptmn"
         qa : QA(getQuestion() == QA.q_dywtpiao, getAnswerd() == QA.a_tmptmn)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Piano");
         qa.deleteObservers();
-        // TODO: Piano
     end
 
 rule "q_dywtpiao_answered_mlislas"
@@ -198,8 +198,8 @@ rule "Q_dyhutlomaav_answered_yihagac"
         qa : QA(getQuestion() == QA.q_dyhutlomaav, getAnswerd() == QA.a_yihagac)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Hurp");
         qa.deleteObservers();
-        // TODO: Hurphy
     end
 
 rule "Q_dyhutlomaav_answered_nr"
@@ -223,8 +223,8 @@ rule "q_dyhnaaulos_answered_nq"
         qa : QA(getQuestion() == QA.q_dyhnaaulos, getAnswerd() == QA.a_nq)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Piano");
         qa.deleteObservers();
-        // TODO: Piano
     end
 
 rule "q_dyhnaaulos_answered_tsjlm"
@@ -232,8 +232,8 @@ rule "q_dyhnaaulos_answered_tsjlm"
         qa : QA(getQuestion() == QA.q_dyhnaaulos, getAnswerd() == QA.a_tsjlm)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("French horn");
         qa.deleteObservers();
-        // TODO: French horn
     end
 
 
@@ -272,8 +272,8 @@ rule "Q_dycythsma_answered_nat"
         qa : QA(getQuestion() == QA.q_dycythsma, getAnswerd() == QA.a_nat)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Comb");
         qa.deleteObservers();
-        // TODO: Comb
     end
 
 rule "q_fyaac_answered_y"
@@ -311,8 +311,8 @@ rule "q_dywtbcoa_answered_yiagbas"
         qa : QA(getQuestion() == QA.q_dywtbcoa, getAnswerd() == QA.a_yiagbas)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Piano");
         qa.deleteObservers();
-        // TODO: Piano
     end
 
 rule "q_dywtbcoa_answered_nriaatp"
@@ -336,8 +336,8 @@ rule "q_aymmomm_answered_m"
         qa : QA(getQuestion() == QA.q_aymmomm, getAnswerd() == QA.a_m)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Piano");
         qa.deleteObservers();
-        // TODO: Piano
     end
 
 rule "q_aymmomm_answered_mc"
@@ -345,8 +345,8 @@ rule "q_aymmomm_answered_mc"
         qa : QA(getQuestion() == QA.q_aymmomm, getAnswerd() == QA.a_mc)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Acoustic guitar");
         qa.deleteObservers();
-        // TODO: Acoustic guitar
     end
 
 rule "q_dyfabojots_answered_jinmiin"
@@ -354,8 +354,8 @@ rule "q_dyfabojots_answered_jinmiin"
         qa : QA(getQuestion() == QA.q_dyfabojots, getAnswerd() == QA.a_jinmiin)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Tube");
         qa.deleteObservers();
-        // TODO: Tube
     end
 
 rule "q_dyfabojots_answered_stc"
@@ -363,8 +363,8 @@ rule "q_dyfabojots_answered_stc"
         qa : QA(getQuestion() == QA.q_dyfabojots, getAnswerd() == QA.a_stc)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Double bass");
         qa.deleteObservers();
-        // TODO: Double bass
     end
 
 rule "q_dyhyn_answered_wap"
@@ -387,8 +387,8 @@ rule "q_dyhagsorat_answered_iaahm"
         qa : QA(getQuestion() == QA.q_dyhagsorat, getAnswerd() == QA.a_iaahm)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Percussion");
         qa.deleteObservers();
-        // TODO: Percussion
     end
 
 rule "q_dyhagsorat_answered_iioig"
@@ -396,8 +396,8 @@ rule "q_dyhagsorat_answered_iioig"
         qa : QA(getQuestion() == QA.q_dyhagsorat, getAnswerd() == QA.a_iioig)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Trumpet");
         qa.deleteObservers();
-        // TODO: Trumpet
     end
 
 rule "q_dyhyn_answered_ntaqn"
@@ -420,8 +420,8 @@ rule "q_dylfm_answered_ianah"
         qa : QA(getQuestion() == QA.q_dylfm, getAnswerd() == QA.a_ianah)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Digital piano");
         qa.deleteObservers();
-        // TODO: Digital piano
     end
 
 rule "q_dylfm_answered_iawfimh"
@@ -429,8 +429,8 @@ rule "q_dylfm_answered_iawfimh"
         qa : QA(getQuestion() == QA.q_dylfm, getAnswerd() == QA.a_iawfimh)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Acoustic guitar");
         qa.deleteObservers();
-        // TODO: Acoustic guitar
     end
 
 rule "q_dyelhw_answered_ianawb"
@@ -499,8 +499,8 @@ rule "q_dymbtbopj_answered_ilagl"
         qa : QA(getQuestion() == QA.q_dymbtbopj, getAnswerd() == QA.a_ilagl)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Viola");
         qa.deleteObservers();
-        // TODO: Viola
     end
 
 
@@ -509,8 +509,8 @@ rule "q_dymbtbopj_answered_niats"
         qa : QA(getQuestion() == QA.q_dymbtbopj, getAnswerd() == QA.a_niats)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Cello");
         qa.deleteObservers();
-        // TODO: Cello
     end
 
 rule "q_dywac_answered_biogmarc"
@@ -518,8 +518,8 @@ rule "q_dywac_answered_biogmarc"
         qa : QA(getQuestion() == QA.q_dywac, getAnswerd() == QA.a_biogmarc)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Oboe");
         qa.deleteObservers();
-        // TODO: Oboe
     end
 
 rule "q_dywac_answered_ilac"
@@ -527,8 +527,8 @@ rule "q_dywac_answered_ilac"
         qa : QA(getQuestion() == QA.q_dywac, getAnswerd() == QA.a_ilac)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Bassoon");
         qa.deleteObservers();
-        // TODO: Bassoon
     end
 
 rule "q_dywac_answered_lits"
@@ -581,8 +581,8 @@ rule "q_labosae_answered_l"
         qa : QA(getQuestion() == QA.q_labosae, getAnswerd() == QA.a_l)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Trumpet");
         qa.deleteObservers();
-        // TODO: Trumpet
     end
 
 rule "q_labosae_answered_ep"
@@ -590,8 +590,8 @@ rule "q_labosae_answered_ep"
         qa : QA(getQuestion() == QA.q_labosae, getAnswerd() == QA.a_ep)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Flute");
         qa.deleteObservers();
-        // TODO: Flute
     end
 
 rule "q_dywtsos_answered_sit"
@@ -599,8 +599,8 @@ rule "q_dywtsos_answered_sit"
         qa : QA(getQuestion() == QA.q_dywtsos, getAnswerd() == QA.a_sit)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Lute");
         qa.deleteObservers();
-        // TODO: Lute
     end
 
 rule "q_dywtsos_answered_stand"
@@ -608,8 +608,8 @@ rule "q_dywtsos_answered_stand"
         qa : QA(getQuestion() == QA.q_dywtsos, getAnswerd() == QA.a_stand)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Harpsichord");
         qa.deleteObservers();
-        // TODO: Harpsichord
     end
 
 rule "q_dywtmia8cb_answered_iigmos"
@@ -617,8 +617,8 @@ rule "q_dywtmia8cb_answered_iigmos"
         qa : QA(getQuestion() == QA.q_dywtmia8cb, getAnswerd() == QA.a_iigmos)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Saxophone");
         qa.deleteObservers();
-        // TODO: Saxophone
     end
 
 rule "q_dywtmia8cb_answered_dn"
@@ -626,6 +626,6 @@ rule "q_dywtmia8cb_answered_dn"
         qa : QA(getQuestion() == QA.q_dywtmia8cb, getAnswerd() == QA.a_dn)
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
+        qa.sendInfo("Clarinet");
         qa.deleteObservers();
-        // TODO: Clarinet
     end

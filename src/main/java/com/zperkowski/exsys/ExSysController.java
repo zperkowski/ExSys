@@ -3,6 +3,7 @@ package com.zperkowski.exsys;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import org.apache.log4j.BasicConfigurator;
@@ -68,7 +69,18 @@ public class ExSysController implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         System.out.println("Observer\t\t\t\t" + o.toString() + " was triggered - GUI updated");
+        if (arg instanceof String)
+            dialog((String) arg);
         qa = (QA) o;
         initQuestion();
+    }
+
+    private void dialog(String info) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("An instrument for you");
+        alert.setHeaderText(null);
+        alert.setContentText(info);
+
+        alert.showAndWait();
     }
 }

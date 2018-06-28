@@ -155,4 +155,9 @@ public class QA extends Observable {
         setChanged();
         notifyObservers();
     }
+
+    public void sendInfo(String info) {
+        setChanged();
+        notifyObservers(info);
+    }
 }
