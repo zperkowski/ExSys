@@ -50,6 +50,7 @@ public class QA extends Observable {
     public static final String a_m = "Motzart";
     public static final String a_mc = "McCartney";
     public static final String a_yiagbas = "Yes, I'm gonna be a star";
+    public static final String a_yrob = "Yes! Roll over Bethoven";
     public static final String a_jinmiin = "Jazz isn't music it's noise";
     public static final String a_stc = "Sure thing, cat!";
     public static final String a_nriaatp = "Not really, I'm a team player";
@@ -65,7 +66,7 @@ public class QA extends Observable {
     public static final String a_ianah = "I'm not a hippy";
     public static final String a_ianawb = "I'm not a wing(?), but...";
     public static final String a_yipsd = "Yuck, I prefer staying dry";
-    public static final String a_ofiib = "Osly if it's baroque";
+    public static final String a_ofiib = "Only if it's baroque";
     public static final String a_iioig = "It's ok I guess";
     public static final String a_iaahm = "I'm a human metronome";
     public static final String a_mah = "Music above hygiene";
