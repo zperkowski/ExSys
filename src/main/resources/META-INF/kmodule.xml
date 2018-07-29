@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
-    <kbase name="demo" packages="rules">
-        <ksession name="demo-rules"/>
-    </kbase>
-    <kbase name="fire" packages="rules">
-        <ksession name="fire-rules"/>
-    </kbase>
-    <kbase name="family" packages="rules">
-        <ksession name="family-rules"/>
-    </kbase>
     <kbase name="exsys" packages="rules">
         <ksession name="exsys-rules"/>
     </kbase>

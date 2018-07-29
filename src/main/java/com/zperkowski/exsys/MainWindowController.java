@@ -9,30 +9,10 @@ import java.io.IOException;
 
 public class MainWindowController {
     @FXML
-    AnchorPane fireAnchorPane;
-    @FXML
-    AnchorPane familyAnchorPane;
-    @FXML
-    AnchorPane exSysAnchorPane;
+    AnchorPane mainAnchor;
 
     @FXML
-    void initialize() {
-
+    void initialize() throws IOException {
+        mainAnchor.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("exSysTab.fxml")));
     }
-
-    @FXML
-    void tabFireClicked() throws IOException {
-        fireAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("fireTab.fxml")));
-    }
-
-    @FXML
-    void tabFamilyClicked() throws IOException {
-        familyAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("familyTab.fxml")));
-    }
-
-    @FXML
-    void tabExSysClicked() throws IOException {
-        exSysAnchorPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getClassLoader().getResource("exSysTab.fxml")));
-    }
-
 }

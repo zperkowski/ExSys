@@ -28,7 +28,7 @@ public class MainTest extends Application {
         BasicConfigurator.configure();
         Logger.getLogger(MainTest.class).setLevel(Level.OFF);
         KieContainer kContainer = ks.getKieClasspathContainer();
-        KieSession session = kContainer.newKieSession("demo-rules");
+        KieSession session = kContainer.newKieSession("exsys-rules");
         Main main = new Main();
         main.setPrintMessage("Hello!");
         session.insert(main);
