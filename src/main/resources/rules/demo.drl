@@ -4,7 +4,7 @@ package com.zperkowski.exsys
 declare enum DaysOfWeek
    SUN("Sunday"),MON("Monday"),TUE("Tuesday"),WED("Wednesday"),THU("Thursday"),FRI("Friday"),SAT("Saturday");
 
-   fullName : String
+   fullName : String;
 end
 
 rule "Hello World"
@@ -12,5 +12,5 @@ rule "Hello World"
      helloWorldObject: Main()
    then
      helloWorldObject.showMessage();
-     System.out.println(" from Drools! " + DaysOfWeek.MON + " " +DaysOfWeek.MON.toString());
+     System.out.println(" from Drools! " + DaysOfWeek.MON + " " + DaysOfWeek.MON.getFullName());
 end

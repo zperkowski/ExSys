@@ -1,25 +1,109 @@
 package com.zperkowski.exsys
 import java.util.Arrays
 
+declare enum Constatnts
+    q_hoay("How old are you?"),
+    q_dyhutlomaav("Do you have unlimited time, lots of money and a van?"),
+    q_dypwtbacp("Do your parents want you to be a child prodigy?"),
+    q_dycythsma("Do you consider yourself to have some musical ability?"),
+    q_ayptpialofpt("Are you prepared to put in a lot of practice time?"),
+    q_dyhnaaulos("Do you have nerves and an upper lip of steel?"),
+    q_dywtdyfm("Do you want to drive your family mad?"),
+    q_fyaac("Fancy yourself as a composer?"),
+    q_aymmomm("Are you more Mozart or more McCartney?"),
+    q_dywtbcoa("Do you want to be center of attention?"),
+    q_dyfabojots("Do you fancy a bit of jazz on the side?"),
+    q_dyhabh("Do you have a big house?"),
+    q_dyhyn("Do you hate your neighbours?"),
+    q_dywtpiao("Do you want to play in a orchestra?"),
+    q_dylfm("Do you like folk music?"),
+    q_dyelhw("Do you enjoy lifting heavy weights?"),
+    q_dyhagsorat("Do you have a good sense of rhythm and timing?"),
+    q_dyhaatsoc("Do you have an aversion to spit or condensation?"),
+    q_dymbtbopj("Do you mind being the butt of people's jokes?"),
+    q_dywac("Do you want a challenge?"),
+    q_dymfar("Do you mind fiddling about reeds?"),
+    q_labosae("Loud and bold or soft and elegant?"),
+    q_dywtsos("Do you wish to sit or stand?"),
+    q_dywtmia8cb("Do you want to moonlight in an 8os cover band?"),
+    a_05("0-5 years old"),
+    a_612("6-12 years old"),
+    a_13("13+ years old"),
+    a_yihagac("Yes! I've also got a chauffeur"),
+    a_nr("Not really"),
+    a_yiaa("Yes, I'm amazing"),
+    a_y("Yes!"),
+    a_niahjtp("No, I'm happy just to play"),
+    a_nat("Not an total (?)"),
+    a_nijwtgpaqap("No, I just want to get playing as quickly as possible"),
+    a_ihs("I have some"),
+    a_nq("Not quite"),
+    a_tsjlm("That sounds just like me"),
+    a_wnij("Wouldn't I just"),
+    a_ianab("I'm not a bart!"),
+    a_np("Not particularly"),
+    a_m("Motzart"),
+    a_mc("McCartney"),
+    a_yiagbas("Yes, I'm gonna be a star"),
+    a_yrob("Yes! Roll over Bethoven"),
+    a_jinmiin("Jazz isn't music it's noise"),
+    a_stc("Sure thing, cat!"),
+    a_nriaatp("Not really, I'm a team player"),
+    a_iliac("I live in a church"),
+    a_tipor("There's plenty of room"),
+    a_iimcab("It's more compact and bijou"),
+    a_tmptmn("To many people, too much noise"),
+    a_wap("With a passion"),
+    a_iawfimh("I always wear flower in my hair"),
+    a_ntaqn("No, they're quite nice"),
+    a_iaomos("I'm often mistaken for Superman"),
+    a_mlislas("My life is like a symphony!"),
+    a_ianah("I'm not a hippy"),
+    a_ianawb("I'm not a wing(?), but..."),
+    a_yipsd("Yuck, I prefer staying dry"),
+    a_ofiib("Only if it's baroque"),
+    a_iioig("It's ok I guess"),
+    a_iaahm("I'm a human metronome"),
+    a_mah("Music above hygiene"),
+    a_lits("Life's too short"),
+    a_biogmarc("Bring it on, give me a real challenge!"),
+    a_ilac("I like a challenge"),
+    a_niats("No, I'm terribly sensitive"),
+    a_ilagl("I love a good laugh"),
+    a_tslwtmh("That sounds like way too much hassle"),
+    a_ilfmt("I love frustrating manual tasks"),
+    a_l("Louder!"),
+    a_ep("Elegant, please"),
+    a_iigmos("If I get my own solo"),
+    a_dn("Definitely not"),
+    a_sit("Sitteth"),
+    a_stand("Standeth");
+
+    fullName : String;
+end
+
+
 rule "Init"
    when
      qa : QA(getQuestion() == "", getAnswerd() == "")
    then
     System.out.println("Rule\tInit\t\t\t" + qa.toString() + " " + qa.countObservers());
-    qa.change(QA.q_hoay, Arrays.asList(QA.a_05, QA.a_612, QA.a_13));
+    qa.change(Constatnts.q_hoay.getFullName(), Arrays.asList(Constatnts.a_05.getFullName(),
+                                                            Constatnts.a_612.getFullName(),
+                                                            Constatnts.a_13.getFullName()));
     retract(qa)
 end
 
 rule "Q_hoay_answered_05"
     when
-        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_05)
+        qa : QA(getQuestion() == Constatnts.q_hoay.getFullName(), getAnswerd() == Constatnts.a_05.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dypwtbacp,
+        QA new_qa = new QA(Constatnts.q_dypwtbacp.getFullName(),
             Arrays.asList(
-                    QA.a_y,
-                    QA.a_niahjtp
+                    Constatnts.a_y.getFullName(),
+                    Constatnts.a_niahjtp.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -27,14 +111,14 @@ rule "Q_hoay_answered_05"
 
 rule "Q_hoay_answered_612"
     when
-        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_612)
+        qa : QA(getQuestion() == Constatnts.q_hoay.getFullName(), getAnswerd() == Constatnts.a_612.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_ayptpialofpt,
+        QA new_qa = new QA(Constatnts.q_ayptpialofpt.getFullName(),
             Arrays.asList(
-                    QA.a_y,
-                    QA.a_nijwtgpaqap
+                    Constatnts.a_y.getFullName(),
+                    Constatnts.a_nijwtgpaqap.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -42,14 +126,14 @@ rule "Q_hoay_answered_612"
 
 rule "Q_hoay_answered_13"
     when
-        qa : QA(getQuestion() == QA.q_hoay, getAnswerd() == QA.a_13)
+        qa : QA(getQuestion() == Constatnts.q_hoay.getFullName(), getAnswerd() == Constatnts.a_13.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhutlomaav,
+        QA new_qa = new QA(Constatnts.q_dyhutlomaav.getFullName(),
             Arrays.asList(
-                    QA.a_yihagac,
-                    QA.a_nr
+                    Constatnts.a_yihagac.getFullName(),
+                    Constatnts.a_nr.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -57,7 +141,7 @@ rule "Q_hoay_answered_13"
 
 rule "q_dypwtbacp_answered_y"
     when
-        qa : QA(getQuestion() == QA.q_dypwtbacp, getAnswerd() == QA.a_y)
+        qa : QA(getQuestion() == Constatnts.q_dypwtbacp.getFullName(), getAnswerd() == Constatnts.a_y.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Violin");
@@ -66,14 +150,14 @@ rule "q_dypwtbacp_answered_y"
 
 rule "q_dypwtbacp_answered_niahjtp"
     when
-        qa : QA(getQuestion() == QA.q_dypwtbacp, getAnswerd() == QA.a_niahjtp)
+        qa : QA(getQuestion() == Constatnts.q_dypwtbacp.getFullName(), getAnswerd() == Constatnts.a_niahjtp.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_ayptpialofpt,
+        QA new_qa = new QA(Constatnts.q_ayptpialofpt.getFullName(),
             Arrays.asList(
-                    QA.a_y,
-                    QA.a_nijwtgpaqap
+                    Constatnts.a_y.getFullName(),
+                    Constatnts.a_nijwtgpaqap.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -82,7 +166,7 @@ rule "q_dypwtbacp_answered_niahjtp"
 
 rule "Q_ayptpialofpt_answered_y"
     when
-        qa : QA(getQuestion() == QA.q_ayptpialofpt, getAnswerd() == QA.a_y)
+        qa : QA(getQuestion() == Constatnts.q_ayptpialofpt.getFullName(), getAnswerd() == Constatnts.a_y.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Piano");
@@ -91,14 +175,14 @@ rule "Q_ayptpialofpt_answered_y"
 
 rule "Q_ayptpialofpt_answered_nijwtgpaqap"
     when
-        qa : QA(getQuestion() == QA.q_ayptpialofpt, getAnswerd() == QA.a_nijwtgpaqap)
+        qa : QA(getQuestion() == Constatnts.q_ayptpialofpt.getFullName(), getAnswerd() == Constatnts.a_nijwtgpaqap.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dywtdyfm,
+        QA new_qa = new QA(Constatnts.q_dywtdyfm.getFullName(),
             Arrays.asList(
-                    QA.a_wnij,
-                    QA.a_ianab
+                    Constatnts.a_wnij.getFullName(),
+                    Constatnts.a_ianab.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -106,7 +190,7 @@ rule "Q_ayptpialofpt_answered_nijwtgpaqap"
 
 rule "q_dywtdyfm_answered_wnij"
     when
-        qa : QA(getQuestion() == QA.q_dywtdyfm, getAnswerd() == QA.a_wnij)
+        qa : QA(getQuestion() == Constatnts.q_dywtdyfm.getFullName(), getAnswerd() == Constatnts.a_wnij.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Rossenbar (?)");
@@ -115,15 +199,15 @@ rule "q_dywtdyfm_answered_wnij"
 
 rule "q_dywtdyfm_answered_ianab"
     when
-        qa : QA(getQuestion() == QA.q_dywtdyfm, getAnswerd() == QA.a_ianab)
+        qa : QA(getQuestion() == Constatnts.q_dywtdyfm.getFullName(), getAnswerd() == Constatnts.a_ianab.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhabh,
+        QA new_qa = new QA(Constatnts.q_dyhabh.getFullName(),
             Arrays.asList(
-                    QA.a_iliac,
-                    QA.a_tipor,
-                    QA.a_iimcab
+                    Constatnts.a_iliac.getFullName(),
+                    Constatnts.a_tipor.getFullName(),
+                    Constatnts.a_iimcab.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -131,7 +215,7 @@ rule "q_dywtdyfm_answered_ianab"
 
 rule "q_dyhabh_answered_iliac"
     when
-        qa : QA(getQuestion() == QA.q_dyhabh, getAnswerd() == QA.a_iliac)
+        qa : QA(getQuestion() == Constatnts.q_dyhabh.getFullName(), getAnswerd() == Constatnts.a_iliac.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Organs");
@@ -140,15 +224,15 @@ rule "q_dyhabh_answered_iliac"
 
 rule "q_dyhabh_answered_tipor"
     when
-        qa : QA(getQuestion() == QA.q_dyhabh, getAnswerd() == QA.a_tipor)
+        qa : QA(getQuestion() == Constatnts.q_dyhabh.getFullName(), getAnswerd() == Constatnts.a_tipor.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dywtpiao,
+        QA new_qa = new QA(Constatnts.q_dywtpiao.getFullName(),
             Arrays.asList(
-                    QA.a_tmptmn,
-                    QA.a_mlislas,
-                    QA.a_ofiib
+                    Constatnts.a_tmptmn.getFullName(),
+                    Constatnts.a_mlislas.getFullName(),
+                    Constatnts.a_ofiib.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -156,7 +240,7 @@ rule "q_dyhabh_answered_tipor"
 
 rule "q_dywtpiao_answered_tmptmn"
     when
-        qa : QA(getQuestion() == QA.q_dywtpiao, getAnswerd() == QA.a_tmptmn)
+        qa : QA(getQuestion() == Constatnts.q_dywtpiao.getFullName(), getAnswerd() == Constatnts.a_tmptmn.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Piano");
@@ -165,14 +249,14 @@ rule "q_dywtpiao_answered_tmptmn"
 
 rule "q_dywtpiao_answered_mlislas"
     when
-        qa : QA(getQuestion() == QA.q_dywtpiao, getAnswerd() == QA.a_mlislas)
+        qa : QA(getQuestion() == Constatnts.q_dywtpiao.getFullName(), getAnswerd() == Constatnts.a_mlislas.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyelhw,
+        QA new_qa = new QA(Constatnts.q_dyelhw.getFullName(),
             Arrays.asList(
-                    QA.a_iaomos,
-                    QA.a_ianawb
+                    Constatnts.a_iaomos.getFullName(),
+                    Constatnts.a_ianawb.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -180,14 +264,14 @@ rule "q_dywtpiao_answered_mlislas"
 
 rule "q_dyhabh_answered_iimcab"
     when
-        qa : QA(getQuestion() == QA.q_dyhabh, getAnswerd() == QA.a_iimcab)
+        qa : QA(getQuestion() == Constatnts.q_dyhabh.getFullName(), getAnswerd() == Constatnts.a_iimcab.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhyn,
+        QA new_qa = new QA(Constatnts.q_dyhyn.getFullName(),
             Arrays.asList(
-                    QA.a_wap,
-                    QA.a_ntaqn
+                    Constatnts.a_wap.getFullName(),
+                    Constatnts.a_ntaqn.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -195,7 +279,7 @@ rule "q_dyhabh_answered_iimcab"
 
 rule "Q_dyhutlomaav_answered_yihagac"
     when
-        qa : QA(getQuestion() == QA.q_dyhutlomaav, getAnswerd() == QA.a_yihagac)
+        qa : QA(getQuestion() == Constatnts.q_dyhutlomaav.getFullName(), getAnswerd() == Constatnts.a_yihagac.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Hurp");
@@ -204,15 +288,15 @@ rule "Q_dyhutlomaav_answered_yihagac"
 
 rule "Q_dyhutlomaav_answered_nr"
     when
-        qa : QA(getQuestion() == QA.q_dyhutlomaav, getAnswerd() == QA.a_nr)
+        qa : QA(getQuestion() == Constatnts.q_dyhutlomaav.getFullName(), getAnswerd() == Constatnts.a_nr.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dycythsma,
+        QA new_qa = new QA(Constatnts.q_dycythsma.getFullName(),
             Arrays.asList(
-                    QA.a_yiaa,
-                    QA.a_nat,
-                    QA.a_ihs
+                    Constatnts.a_yiaa.getFullName(),
+                    Constatnts.a_nat.getFullName(),
+                    Constatnts.a_ihs.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -220,7 +304,7 @@ rule "Q_dyhutlomaav_answered_nr"
 
 rule "q_dyhnaaulos_answered_nq"
     when
-        qa : QA(getQuestion() == QA.q_dyhnaaulos, getAnswerd() == QA.a_nq)
+        qa : QA(getQuestion() == Constatnts.q_dyhnaaulos.getFullName(), getAnswerd() == Constatnts.a_nq.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Piano");
@@ -229,7 +313,7 @@ rule "q_dyhnaaulos_answered_nq"
 
 rule "q_dyhnaaulos_answered_tsjlm"
     when
-        qa : QA(getQuestion() == QA.q_dyhnaaulos, getAnswerd() == QA.a_tsjlm)
+        qa : QA(getQuestion() == Constatnts.q_dyhnaaulos.getFullName(), getAnswerd() == Constatnts.a_tsjlm.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("French horn");
@@ -239,14 +323,14 @@ rule "q_dyhnaaulos_answered_tsjlm"
 
 rule "Q_dycythsma_answered_yiaa"
     when
-        qa : QA(getQuestion() == QA.q_dycythsma, getAnswerd() == QA.a_yiaa)
+        qa : QA(getQuestion() == Constatnts.q_dycythsma.getFullName(), getAnswerd() == Constatnts.a_yiaa.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhnaaulos,
+        QA new_qa = new QA(Constatnts.q_dyhnaaulos.getFullName(),
             Arrays.asList(
-                    QA.a_tsjlm,
-                    QA.a_nq
+                    Constatnts.a_tsjlm.getFullName(),
+                    Constatnts.a_nq.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -254,14 +338,14 @@ rule "Q_dycythsma_answered_yiaa"
 
 rule "Q_dycythsma_answered_ihs"
     when
-        qa : QA(getQuestion() == QA.q_dycythsma, getAnswerd() == QA.a_ihs)
+        qa : QA(getQuestion() == Constatnts.q_dycythsma.getFullName(), getAnswerd() == Constatnts.a_ihs.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_fyaac,
+        QA new_qa = new QA(Constatnts.q_fyaac.getFullName(),
             Arrays.asList(
-                    QA.a_yrob,
-                    QA.a_np
+                    Constatnts.a_yrob.getFullName(),
+                    Constatnts.a_np.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -269,7 +353,7 @@ rule "Q_dycythsma_answered_ihs"
 
 rule "Q_dycythsma_answered_nat"
     when
-        qa : QA(getQuestion() == QA.q_dycythsma, getAnswerd() == QA.a_nat)
+        qa : QA(getQuestion() == Constatnts.q_dycythsma.getFullName(), getAnswerd() == Constatnts.a_nat.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Comb");
@@ -278,14 +362,14 @@ rule "Q_dycythsma_answered_nat"
 
 rule "q_fyaac_answered_y"
     when
-        qa : QA(getQuestion() == QA.q_fyaac, getAnswerd() == QA.a_y)
+        qa : QA(getQuestion() == Constatnts.q_fyaac.getFullName(), getAnswerd() == Constatnts.a_y.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_aymmomm,
+        QA new_qa = new QA(Constatnts.q_aymmomm.getFullName(),
             Arrays.asList(
-                    QA.a_m,
-                    QA.a_mc
+                    Constatnts.a_m.getFullName(),
+                    Constatnts.a_mc.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -293,14 +377,14 @@ rule "q_fyaac_answered_y"
 
 rule "q_fyaac_answered_np"
     when
-        qa : QA(getQuestion() == QA.q_fyaac, getAnswerd() == QA.a_np)
+        qa : QA(getQuestion() == Constatnts.q_fyaac.getFullName(), getAnswerd() == Constatnts.a_np.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dywtbcoa,
+        QA new_qa = new QA(Constatnts.q_dywtbcoa.getFullName(),
             Arrays.asList(
-                    QA.a_yiagbas,
-                    QA.a_nriaatp
+                    Constatnts.a_yiagbas.getFullName(),
+                    Constatnts.a_nriaatp.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -308,7 +392,7 @@ rule "q_fyaac_answered_np"
 
 rule "q_dywtbcoa_answered_yiagbas"
     when
-        qa : QA(getQuestion() == QA.q_dywtbcoa, getAnswerd() == QA.a_yiagbas)
+        qa : QA(getQuestion() == Constatnts.q_dywtbcoa.getFullName(), getAnswerd() == Constatnts.a_yiagbas.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Piano");
@@ -317,15 +401,15 @@ rule "q_dywtbcoa_answered_yiagbas"
 
 rule "q_dywtbcoa_answered_nriaatp"
     when
-        qa : QA(getQuestion() == QA.q_dywtbcoa, getAnswerd() == QA.a_nriaatp)
+        qa : QA(getQuestion() == Constatnts.q_dywtbcoa.getFullName(), getAnswerd() == Constatnts.a_nriaatp.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhabh,
+        QA new_qa = new QA(Constatnts.q_dyhabh.getFullName(),
             Arrays.asList(
-                    QA.a_iliac,
-                    QA.a_tipor,
-                    QA.a_iimcab
+                    Constatnts.a_iliac.getFullName(),
+                    Constatnts.a_tipor.getFullName(),
+                    Constatnts.a_iimcab.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -333,7 +417,7 @@ rule "q_dywtbcoa_answered_nriaatp"
 
 rule "q_aymmomm_answered_m"
     when
-        qa : QA(getQuestion() == QA.q_aymmomm, getAnswerd() == QA.a_m)
+        qa : QA(getQuestion() == Constatnts.q_aymmomm.getFullName(), getAnswerd() == Constatnts.a_m.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Piano");
@@ -342,7 +426,7 @@ rule "q_aymmomm_answered_m"
 
 rule "q_aymmomm_answered_mc"
     when
-        qa : QA(getQuestion() == QA.q_aymmomm, getAnswerd() == QA.a_mc)
+        qa : QA(getQuestion() == Constatnts.q_aymmomm.getFullName(), getAnswerd() == Constatnts.a_mc.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Acoustic guitar");
@@ -351,7 +435,7 @@ rule "q_aymmomm_answered_mc"
 
 rule "q_dyfabojots_answered_jinmiin"
     when
-        qa : QA(getQuestion() == QA.q_dyfabojots, getAnswerd() == QA.a_jinmiin)
+        qa : QA(getQuestion() == Constatnts.q_dyfabojots.getFullName(), getAnswerd() == Constatnts.a_jinmiin.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Tube");
@@ -360,7 +444,7 @@ rule "q_dyfabojots_answered_jinmiin"
 
 rule "q_dyfabojots_answered_stc"
     when
-        qa : QA(getQuestion() == QA.q_dyfabojots, getAnswerd() == QA.a_stc)
+        qa : QA(getQuestion() == Constatnts.q_dyfabojots.getFullName(), getAnswerd() == Constatnts.a_stc.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Double bass");
@@ -369,14 +453,14 @@ rule "q_dyfabojots_answered_stc"
 
 rule "q_dyhyn_answered_wap"
     when
-        qa : QA(getQuestion() == QA.q_dyhyn, getAnswerd() == QA.a_wap)
+        qa : QA(getQuestion() == Constatnts.q_dyhyn.getFullName(), getAnswerd() == Constatnts.a_wap.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhagsorat,
+        QA new_qa = new QA(Constatnts.q_dyhagsorat.getFullName(),
             Arrays.asList(
-                    QA.a_iaahm,
-                    QA.a_iioig
+                    Constatnts.a_iaahm.getFullName(),
+                    Constatnts.a_iioig.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -384,7 +468,7 @@ rule "q_dyhyn_answered_wap"
 
 rule "q_dyhagsorat_answered_iaahm"
     when
-        qa : QA(getQuestion() == QA.q_dyhagsorat, getAnswerd() == QA.a_iaahm)
+        qa : QA(getQuestion() == Constatnts.q_dyhagsorat.getFullName(), getAnswerd() == Constatnts.a_iaahm.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Percussion");
@@ -393,7 +477,7 @@ rule "q_dyhagsorat_answered_iaahm"
 
 rule "q_dyhagsorat_answered_iioig"
     when
-        qa : QA(getQuestion() == QA.q_dyhagsorat, getAnswerd() == QA.a_iioig)
+        qa : QA(getQuestion() == Constatnts.q_dyhagsorat.getFullName(), getAnswerd() == Constatnts.a_iioig.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Trumpet");
@@ -402,14 +486,14 @@ rule "q_dyhagsorat_answered_iioig"
 
 rule "q_dyhyn_answered_ntaqn"
     when
-        qa : QA(getQuestion() == QA.q_dyhyn, getAnswerd() == QA.a_ntaqn)
+        qa : QA(getQuestion() == Constatnts.q_dyhyn.getFullName(), getAnswerd() == Constatnts.a_ntaqn.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dylfm,
+        QA new_qa = new QA(Constatnts.q_dylfm.getFullName(),
             Arrays.asList(
-                    QA.a_ianah,
-                    QA.a_iawfimh
+                    Constatnts.a_ianah.getFullName(),
+                    Constatnts.a_iawfimh.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -417,7 +501,7 @@ rule "q_dyhyn_answered_ntaqn"
 
 rule "q_dylfm_answered_ianah"
     when
-        qa : QA(getQuestion() == QA.q_dylfm, getAnswerd() == QA.a_ianah)
+        qa : QA(getQuestion() == Constatnts.q_dylfm.getFullName(), getAnswerd() == Constatnts.a_ianah.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Digital piano");
@@ -426,7 +510,7 @@ rule "q_dylfm_answered_ianah"
 
 rule "q_dylfm_answered_iawfimh"
     when
-        qa : QA(getQuestion() == QA.q_dylfm, getAnswerd() == QA.a_iawfimh)
+        qa : QA(getQuestion() == Constatnts.q_dylfm.getFullName(), getAnswerd() == Constatnts.a_iawfimh.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Acoustic guitar");
@@ -435,14 +519,14 @@ rule "q_dylfm_answered_iawfimh"
 
 rule "q_dyelhw_answered_ianawb"
     when
-        qa : QA(getQuestion() == QA.q_dyelhw, getAnswerd() == QA.a_ianawb)
+        qa : QA(getQuestion() == Constatnts.q_dyelhw.getFullName(), getAnswerd() == Constatnts.a_ianawb.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyhaatsoc,
+        QA new_qa = new QA(Constatnts.q_dyhaatsoc.getFullName(),
             Arrays.asList(
-                    QA.a_mah,
-                    QA.a_yipsd
+                    Constatnts.a_mah.getFullName(),
+                    Constatnts.a_yipsd.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -450,15 +534,15 @@ rule "q_dyelhw_answered_ianawb"
 
 rule "q_dyhaatsoc_answered_mah"
     when
-        qa : QA(getQuestion() == QA.q_dyhaatsoc, getAnswerd() == QA.a_mah)
+        qa : QA(getQuestion() == Constatnts.q_dyhaatsoc.getFullName(), getAnswerd() == Constatnts.a_mah.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dywac,
+        QA new_qa = new QA(Constatnts.q_dywac.getFullName(),
             Arrays.asList(
-                    QA.a_ilac,
-                    QA.a_biogmarc,
-                    QA.a_lits
+                    Constatnts.a_ilac.getFullName(),
+                    Constatnts.a_biogmarc.getFullName(),
+                    Constatnts.a_lits.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -466,14 +550,14 @@ rule "q_dyhaatsoc_answered_mah"
 
 rule "q_dyhaatsoc_answered_yipsd"
     when
-        qa : QA(getQuestion() == QA.q_dyhaatsoc, getAnswerd() == QA.a_yipsd)
+        qa : QA(getQuestion() == Constatnts.q_dyhaatsoc.getFullName(), getAnswerd() == Constatnts.a_yipsd.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dymbtbopj,
+        QA new_qa = new QA(Constatnts.q_dymbtbopj.getFullName(),
             Arrays.asList(
-                    QA.a_ilagl,
-                    QA.a_niats
+                    Constatnts.a_ilagl.getFullName(),
+                    Constatnts.a_niats.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -481,14 +565,14 @@ rule "q_dyhaatsoc_answered_yipsd"
 
 rule "q_dyelhw_answered_iaomos"
     when
-        qa : QA(getQuestion() == QA.q_dyelhw, getAnswerd() == QA.a_iaomos)
+        qa : QA(getQuestion() == Constatnts.q_dyelhw.getFullName(), getAnswerd() == Constatnts.a_iaomos.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dyfabojots,
+        QA new_qa = new QA(Constatnts.q_dyfabojots.getFullName(),
             Arrays.asList(
-                    QA.a_jinmiin,
-                    QA.a_stc
+                    Constatnts.a_jinmiin.getFullName(),
+                    Constatnts.a_stc.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -496,7 +580,7 @@ rule "q_dyelhw_answered_iaomos"
 
 rule "q_dymbtbopj_answered_ilagl"
     when
-        qa : QA(getQuestion() == QA.q_dymbtbopj, getAnswerd() == QA.a_ilagl)
+        qa : QA(getQuestion() == Constatnts.q_dymbtbopj.getFullName(), getAnswerd() == Constatnts.a_ilagl.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Viola");
@@ -506,7 +590,7 @@ rule "q_dymbtbopj_answered_ilagl"
 
 rule "q_dymbtbopj_answered_niats"
     when
-        qa : QA(getQuestion() == QA.q_dymbtbopj, getAnswerd() == QA.a_niats)
+        qa : QA(getQuestion() == Constatnts.q_dymbtbopj.getFullName(), getAnswerd() == Constatnts.a_niats.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Cello");
@@ -515,7 +599,7 @@ rule "q_dymbtbopj_answered_niats"
 
 rule "q_dywac_answered_biogmarc"
     when
-        qa : QA(getQuestion() == QA.q_dywac, getAnswerd() == QA.a_biogmarc)
+        qa : QA(getQuestion() == Constatnts.q_dywac.getFullName(), getAnswerd() == Constatnts.a_biogmarc.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Oboe");
@@ -524,7 +608,7 @@ rule "q_dywac_answered_biogmarc"
 
 rule "q_dywac_answered_ilac"
     when
-        qa : QA(getQuestion() == QA.q_dywac, getAnswerd() == QA.a_ilac)
+        qa : QA(getQuestion() == Constatnts.q_dywac.getFullName(), getAnswerd() == Constatnts.a_ilac.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Bassoon");
@@ -533,14 +617,14 @@ rule "q_dywac_answered_ilac"
 
 rule "q_dywac_answered_lits"
     when
-        qa : QA(getQuestion() == QA.q_dywac, getAnswerd() == QA.a_lits)
+        qa : QA(getQuestion() == Constatnts.q_dywac.getFullName(), getAnswerd() == Constatnts.a_lits.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dymfar,
+        QA new_qa = new QA(Constatnts.q_dymfar.getFullName(),
             Arrays.asList(
-                    QA.a_tslwtmh,
-                    QA.a_ilfmt
+                    Constatnts.a_tslwtmh.getFullName(),
+                    Constatnts.a_ilfmt.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -548,14 +632,14 @@ rule "q_dywac_answered_lits"
 
 rule "q_dymfar_answered_tslwtmh"
     when
-        qa : QA(getQuestion() == QA.q_dymfar, getAnswerd() == QA.a_tslwtmh)
+        qa : QA(getQuestion() == Constatnts.q_dymfar.getFullName(), getAnswerd() == Constatnts.a_tslwtmh.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_labosae,
+        QA new_qa = new QA(Constatnts.q_labosae.getFullName(),
             Arrays.asList(
-                    QA.a_l,
-                    QA.a_ep
+                    Constatnts.a_l.getFullName(),
+                    Constatnts.a_ep.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -563,14 +647,14 @@ rule "q_dymfar_answered_tslwtmh"
 
 rule "q_dymfar_answered_ilfmt"
     when
-        qa : QA(getQuestion() == QA.q_dymfar, getAnswerd() == QA.a_ilfmt)
+        qa : QA(getQuestion() == Constatnts.q_dymfar.getFullName(), getAnswerd() == Constatnts.a_ilfmt.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.deleteObservers();
-        QA new_qa = new QA(QA.q_dywtmia8cb,
+        QA new_qa = new QA(Constatnts.q_dywtmia8cb.getFullName(),
             Arrays.asList(
-                    QA.a_iigmos,
-                    QA.a_dn
+                    Constatnts.a_iigmos.getFullName(),
+                    Constatnts.a_dn.getFullName()
                     ),
                     qa.getObserver());
         insert(new_qa);
@@ -578,7 +662,7 @@ rule "q_dymfar_answered_ilfmt"
 
 rule "q_labosae_answered_l"
     when
-        qa : QA(getQuestion() == QA.q_labosae, getAnswerd() == QA.a_l)
+        qa : QA(getQuestion() == Constatnts.q_labosae.getFullName(), getAnswerd() == Constatnts.a_l.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Trumpet");
@@ -587,7 +671,7 @@ rule "q_labosae_answered_l"
 
 rule "q_labosae_answered_ep"
     when
-        qa : QA(getQuestion() == QA.q_labosae, getAnswerd() == QA.a_ep)
+        qa : QA(getQuestion() == Constatnts.q_labosae.getFullName(), getAnswerd() == Constatnts.a_ep.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Flute");
@@ -596,7 +680,7 @@ rule "q_labosae_answered_ep"
 
 rule "q_dywtsos_answered_sit"
     when
-        qa : QA(getQuestion() == QA.q_dywtsos, getAnswerd() == QA.a_sit)
+        qa : QA(getQuestion() == Constatnts.q_dywtsos.getFullName(), getAnswerd() == Constatnts.a_sit.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Lute");
@@ -605,7 +689,7 @@ rule "q_dywtsos_answered_sit"
 
 rule "q_dywtsos_answered_stand"
     when
-        qa : QA(getQuestion() == QA.q_dywtsos, getAnswerd() == QA.a_stand)
+        qa : QA(getQuestion() == Constatnts.q_dywtsos.getFullName(), getAnswerd() == Constatnts.a_stand.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Harpsichord");
@@ -614,7 +698,7 @@ rule "q_dywtsos_answered_stand"
 
 rule "q_dywtmia8cb_answered_iigmos"
     when
-        qa : QA(getQuestion() == QA.q_dywtmia8cb, getAnswerd() == QA.a_iigmos)
+        qa : QA(getQuestion() == Constatnts.q_dywtmia8cb.getFullName(), getAnswerd() == Constatnts.a_iigmos.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Saxophone");
@@ -623,7 +707,7 @@ rule "q_dywtmia8cb_answered_iigmos"
 
 rule "q_dywtmia8cb_answered_dn"
     when
-        qa : QA(getQuestion() == QA.q_dywtmia8cb, getAnswerd() == QA.a_dn)
+        qa : QA(getQuestion() == Constatnts.q_dywtmia8cb.getFullName(), getAnswerd() == Constatnts.a_dn.getFullName())
     then
         System.out.println("Rule: " + qa.toString() + " " + qa.getQuestion() + " answer:\t" + qa.getAnswerd());
         qa.sendInfo("Clarinet");
